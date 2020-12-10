@@ -1,0 +1,36 @@
+.banner_content{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header{
+    /* background-color: green; */
+    display: flex;
+    height: 50px;
+    padding-left: 150px;
+}
+
+.account-container {
+    /* background-color: red; */
+    width: 220px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.banner .banner_content .link-multimidia {
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+}
+
+.banner .banner_content .link {
+    text-decoration: none;
+    color: black;
+    /* border-style: solid; */
+    padding: 5px;
+    margin-right: 10px;
+}
