@@ -7,15 +7,16 @@
 }
 
 header{
-    /* background-color: green; */
+    background-color:#e02041;
     display: flex;
-    height: 50px;
+    height: 60px;
     padding-left: 150px;
+
 }
 
 .account-container {
     /* background-color: red; */
-    width: 320px;
+    /* width: 320px; */
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -28,12 +29,12 @@ header{
 }
 
 .banner .banner_content .link {
-    border-style: solid;
+    /* border-style: solid;
     border-color: white;
     border-width: 2px;
-    border-radius: 6px;
+    border-radius: 6px; */
     text-decoration: none;
-    color: black;
+    color: white;
     /* border-style: solid; */
     padding: 6px;
     margin-right: 10px;

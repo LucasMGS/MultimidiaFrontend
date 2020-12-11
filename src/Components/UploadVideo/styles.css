@@ -10,7 +10,7 @@ section {
     display: flex;
     align-content: center;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .file-container{
@@ -29,6 +29,7 @@ h1 {
     height: 200px;
     display: flex;
     justify-items: flex-end;
+    margin: 10px;
 }
 
 .video-container {

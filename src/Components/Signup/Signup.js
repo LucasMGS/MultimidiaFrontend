@@ -12,7 +12,7 @@ const Signup = () => {
     function SignupHandler(e) {
         e.preventDefault();
 
-        try {
+       
             const data = {
                 username,
                 password,
@@ -21,13 +21,11 @@ const Signup = () => {
             console.log(data);
             var response = api.post('/v1/Auth/register',data).then(
                 (response) => {console.log(response)},
-                (error) => {alert(error)}
+                (error) => {alert('Aconteceu algum erro ao tentar realizar o cadastro!')}
             );
-            console.log(response.mensagem);
+            console.log(response);
             
-        } catch (error) {
-            alert('Aconteceu algum erro ao tentar cadastrar!')
-        }
+       
     }
 
     return (

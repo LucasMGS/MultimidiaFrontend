@@ -1,23 +1,29 @@
-import React from 'react';
+import React, { useEffect,useState } from 'react';
+import api from '../../services/api';
 import './styles.css';
 
-function Row(props) {
+const base_url = "https://image.tmdb.org/t/p/original/";
 
+function Row({ title, url, isLargeRow }) {
+
+    const [movies,setMovies] = useState([]);
+    useEffect(() => { 
+        async function fetchData(){
+            const response = await api.get(url);
+            setMovies(response.data.results);
+            return response;
+        }
+        fetchData();
+    }, [url]);
     return (
         <>
             <div className="row">
-                <h2> {props.title} </h2>
-
+                <h2> {title} </h2>
             </div>
             <div className="row__posters">
-                <div>
-                    <img className="row__poster" src="https://upload.wikimedia.org/wikipedia/en/3/38/The_SpongeBob_Movie_Sponge_on_the_Run.jpg" alt="teste"></img>
-                    <p>Filme do bob esponja</p>
-                </div>
-                <div>
-                    <img className="row__poster" src="https://upload.wikimedia.org/wikipedia/en/3/38/The_SpongeBob_Movie_Sponge_on_the_Run.jpg" alt="teste"></img>
-                    <p>Filme do bob esponja</p>
-                </div>
+                {movies.map(movie => (
+                    <img key={movie.id} className={`row__poster ${isLargeRow && "row__posterLarge"}`} src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`} alt={movie.name} />
+                ))}
             </div>
         </>
     );

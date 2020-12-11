@@ -3,126 +3,115 @@ import Header from '../Header/Header';
 import api from '../../services/api';
 import './styles.css';
 
-export class UploadVideo extends Component {
-    constructor(props) {
-        super(props);
-        this.state = 
-        {
-             thumbnail: null, 
-            //  thumbPreview: [],
-        };
-      
+function UploadVideo() {
+
+    const [titulo, setTitulo] = useState('');
+    const [sinopse, setSinopse] = useState('');
+    const [video, setVideo] = useState({});
+    const [videoPrev, setVideoPrev] = useState({});
+    const [thumbnail, setThumbnail] = useState({});
+    const [thumbPreview, setThumbPreview] = useState([]);
+
+    function convertToBase64(e) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var arrayBuffer = e,
+                array = new Uint8Array(arrayBuffer),
+                binaryString = String.fromCharCode.apply(null, array);
+
+            debugger;
+        }
+        reader.readAsArrayBuffer(e);
     }
-    handleMedia(e) {
-        // var base64 = URL.createObjectURL(e.target.files[0]);
-        // var data = e.target.files[0];
-        // console.log(base64);
-        // console.log(thumbnail);
-       this.setState(
-            { 
-                thumbnail: e.target.files[0], 
-                
-                // thumbPreview: URL.createObjectURL(e.target.files[0]) 
-            });
-            console.log(e.target.files[0]);
-            console.log(this.state.thumbnail);
-    }
-    handleSubmitFile(e) {
+
+    function onFormSubmit(e) {
         e.preventDefault();
 
+        const formData = new FormData();
+        formData.append('Nome', titulo);
+        formData.append('Sinopse', sinopse,);
+        formData.append('ContentTypeVideo', 'video/mp4',);
+        formData.append('ContentTypeImagem', 'image/jpg',);
+        formData.append('Video', video);
+        formData.append('Imagem', thumbnail);
+        formData.append('Categoria', "Terror");
 
-        if (this.state.thumbnail !== null) {
+        // console.log(formData);
 
-            var formData = new FormData();
-            formData.append('uploadImage', this.state.thumbnail);
-
-            api.post(
-                'v1/Video/CadastrarVideo',
-                formData,
-                {
-                    headers: {
-                        // "Authorization": "YOUR_API_AUTHORIZATION_KEY_SHOULD_GOES_HERE_IF_HAVE",
-                        "Content-type": "multipart/form-data",
-                    },
-                }
-            )
-                .then(res => {
-                    console.log(`Success` + res.data);
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        }
+        api.post('/v1/Video', formData,
+            {
+                Authorization: "Bearer" + " " + localStorage.getItem('userToken'),
+                'content-type': 'multipart/form-data'
+            })
+            .then(res => {
+                console.log(`Success` + res.data);
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
-    render() {
 
-        
 
-        
-        return (
-            <Fragment>
-                <Header />
-                <h1>Fazer Upload de video</h1>
-                <section>
-                    <div className="uploadVideo-container">
-                        <form onSubmit={this.handleSubmitFile}>
-                            <label>Titulo do video:</label>
-                            <input
-                                // value={titulo}
-                                type="text"
-                            // onChange={e => setTitulo(e.target.value)}
-                            />
-                            <label>Sinopse:</label>
+    return (
+        <Fragment>
+            <Header />
+            <h1>Fazer Upload de video</h1>
+            <section>
+                <div className="uploadVideo-container">
+                    <form onSubmit={onFormSubmit}>
+                        <label>Titulo do video:</label>
+                        <input
+                            value={titulo}
+                            type="text"
+                            onChange={e => setTitulo(e.target.value)}
+                        />
+                        <label>Sinopse:</label>
 
-                            <input
-                                type="text"
-                            // value={sinopse}
-                            // onChange={e => setSinopse(e.target.value)}
-                            />
-                            <label>Thumbnail:</label>
-                            <input
-                                className="file-container"
-                                type="file"
-                                onChange={e => this.handleMedia(e)}
-                            />
+                        <input
+                            type="text"
+                            value={sinopse}
+                            onChange={e => setSinopse(e.target.value)}
+                        />
+                        <label>Thumbnail:</label>
+                        <input
+                            className="file-container"
+                            type="file"
+                            onChange={e => {
+                                setThumbnail(e.target.files[0]);
+                                setThumbPreview(URL.createObjectURL(e.target.files[0]));
+                            }}
+                        />
 
-                            <label>Video: </label>
-                            <input
-                                className="video-container"
-                                type="file"
-                                // value={video}
-                                onChange={e => this.handleMedia(e)}
-                            />
-
+                        {thumbPreview.length != 0 ?
                             <div className="image-preview">
-                                <img src={this.thumbnail} alt="Image preview"></img>
-                            </div>
-                            <source src="" className="file-container" type="file" type="video/mp4" />
-                            <button type="submit" className="button">Fazer upload</button>
+                                <img src={thumbPreview} alt="Image preview"></img>
+                            </div> :
+                            <div></div>}
 
-                        </form>
-                    </div>
-                </section>
-            </Fragment>
-        );
-    }
+                        <label>Video: </label>
+                        <input
+                            className="video-container"
+                            type="file"
+                            onChange={e => {
+                                setVideo(e.target.files[0])
+
+                                // setVideoPrev(base64);
+                            }}
+                        />
+                        
+                        {/* <video height="350" autoPlay muted width="600" controls="controls">
+                            <source src={videoPrev} type="video/mp4" />
+                            <p>Desculpe, seu navegador não suporta</p>
+                        </video> */}
+                        
+
+                        <button type="submit" className="button">Fazer upload</button>
+
+                    </form>
+                </div>
+            </section>
+        </Fragment>
+    );
 }
-// function UploadVideo() {
-//     const [titulo, setTitulo] = useState([]);
-//     const [sinopse, setSinopse] = useState([]);
-//     const [thumbPreview, setThumbPreview] = useState([]);
-//     const [thumbnail, setThumbnail] = useState([]);
-//     const [video, setVideo] = useState('');
 
-
-
-//     console.log(thumbnail);
-
-
-
-
-//     return (
-
-//     );
-
-// }
+export default UploadVideo;
