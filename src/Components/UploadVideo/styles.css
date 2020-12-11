@@ -3,10 +3,36 @@ section {
     justify-content: center;
     margin-top: 50px;
 }
-form {
-    max-width: 500px;
+.uploadVideo-container {
+    width: 100%;
+    max-width: 450px;
+    height: 20vh;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-top: 50px;
 }
 
 .file-container{
     padding-top: 15px;
+    color: white;
+    display: flex;
+}
+
+h1 {
+    text-align: center;
+    /* background: #e02041; */
+}
+
+.image-preview img{
+    width: 50%;
+    height: 200px;
+    display: flex;
+    justify-items: flex-end;
+}
+
+.video-container {
+    padding-top: 15px;
+    color: white;
+    display: flex;
 }

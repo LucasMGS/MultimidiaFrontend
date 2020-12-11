@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import Signup from './Components/Signup/Signup';
-import UploadVideo from './Components/UploadVideo/UploadVideo';
+import {UploadVideo} from './Components/UploadVideo/UploadVideo';
 
 function Routes() {
     return (                    

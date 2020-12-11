@@ -34,3 +34,12 @@ input {
     justify-content: center;
 }
 
+.cadastrar-link {
+    padding-top: 1px;
+    margin-left: 5px;
+    font-family: Roboto;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+}
+

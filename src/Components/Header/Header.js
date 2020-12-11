@@ -8,21 +8,21 @@ function Header() {
             <header className="banner">
                 <div className="banner_content">
                     <Link className="link-multimidia" to="/">
-                        <h3 className="header-link"> Multimidia</h3>
+                        <h3 > Multimidia</h3>
                     </Link>
                     <div className="account-container">
                         <Link className="link" to="/login">
-                            <h3 className="header-link"> Entrar </h3>
+                            <h3>  Entrar </h3>
                         </Link>
                         <Link className="link" to="/signup">
-                            <h3 className="header-link"> Criar uma conta </h3>
+                            <h3> Criar uma conta </h3>
                         </Link>
                         <Link className="link" to="/uploadVideo">
-                            <h3 className="header-link"> upar video </h3>
+                            <h3> upar video </h3>
                         </Link>
                     </div>
                 </div>
-                <hr />
+                <hr></hr>
             </header>
 
         </Fragment>
