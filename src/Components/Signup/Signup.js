@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import Header from '../Header/Header';
-import api from '../../services/api';
+import api from '../../services/backendAPI';
 import './styles.css';
 
 

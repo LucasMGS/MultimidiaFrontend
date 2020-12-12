@@ -1,28 +1,32 @@
 import React, { Fragment, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Header from "../Header/Header";
-import api from "../../services/api";
+import api from "../../services/backendAPI";
 import "./styles.css";
 
 const Login = () => {
-  const [username, setUserName] = useState([]);
-  const [password, setPassword] = useState([]);
+  const [username, setUserName] = useState('');
+  const [password, setPassword] = useState('');
   let history = useHistory();
 
   async function LoginHandler(e) {
     e.preventDefault();
 
     try {
-      const data = {
-        username,
-        password,
-      };
+      if ((username === '') & (password === '')) {
+        alert("Digite um usuario ou uma senha");
+      } else {
+        const data = {
+          username,
+          password,
+        };
 
-      var response = await api.post("/v1/Auth/login", data);
-      if (response.data.token != null) {
-        localStorage.setItem("userToken", response.data.token);
-        localStorage.setItem("username", response.data.username);
-        history.push("/profile");
+        var response = await api.post("/v1/Auth/login", data);
+        if (response.data.token != null) {
+          localStorage.setItem("userToken", response.data.token);
+          localStorage.setItem("username", response.data.username);
+          history.push("/profile");
+        }
       }
     } catch (error) {
       alert(error);

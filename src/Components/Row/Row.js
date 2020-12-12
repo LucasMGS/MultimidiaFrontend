@@ -1,5 +1,5 @@
 import React, { useEffect,useState } from 'react';
-import api from '../../services/api';
+import api from '../../services/moviesAPI';
 import './styles.css';
 
 const base_url = "https://image.tmdb.org/t/p/original/";

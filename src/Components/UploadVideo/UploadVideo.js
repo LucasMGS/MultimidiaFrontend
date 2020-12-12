@@ -1,6 +1,6 @@
 import React, { Fragment, useState, Component } from 'react';
 import Header from '../Header/Header';
-import api from '../../services/api';
+import api from '../../services/backendAPI';
 import './styles.css';
 
 
@@ -9,7 +9,6 @@ function UploadVideo() {
     const [titulo, setTitulo] = useState('');
     const [sinopse, setSinopse] = useState('');
     const [video, setVideo] = useState({});
-    const [videoPrev, setVideoPrev] = useState({});
     const [thumbnail, setThumbnail] = useState({});
     const [thumbPreview, setThumbPreview] = useState([]);
 
@@ -29,7 +28,7 @@ function UploadVideo() {
 
         api.post('/v1/Video', formData,
             {
-                Authorization: "Bearer" + " " + localStorage.getItem('userToken'),
+                Authorization: "Bearer " + localStorage.getItem('userToken'),
                 'content-type': 'multipart/form-data'
             })
             .then(res => {
@@ -69,7 +68,7 @@ function UploadVideo() {
                             }}
                         />
 
-                        {thumbPreview.length != 0 ?
+                        {thumbPreview.length !== 0 ?
                             <div className="image-preview">
                                 <img src={thumbPreview} alt="Image preview"></img>
                             </div> :

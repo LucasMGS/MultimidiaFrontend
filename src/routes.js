@@ -6,6 +6,7 @@ import Signup from './Components/Signup/Signup';
 import UploadVideo from './Components/UploadVideo/UploadVideo';
 import Profile from './Components/Profile/Profile';
 
+//Arquivo de rotas do projeto
 function Routes() {
     return (                    
             <BrowserRouter>

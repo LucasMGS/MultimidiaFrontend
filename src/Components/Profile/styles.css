@@ -1,3 +1,15 @@
 h2 {
-    margin: 40px;
+    margin-top: 40px;
+    margin-left: 40px;
+}
+
+.title-container {
+    height: 25px;
+}
+.video-media {
+    margin-left: 50px;
+}
+
+.image-media {
+    padding: 50px;
 }
