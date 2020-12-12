@@ -1,0 +1,40 @@
+.banner_content{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header{
+    background-color:#e02041;
+    display: flex;
+    height: 60px;
+    padding-left: 150px;
+
+}
+
+.account-container {
+    /* background-color: red; */
+    /* width: 320px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.banner .banner_content .link-multimidia {
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+}
+.banner_content .link-multimidia{
+    text-decoration: none;
+}
+.banner .banner_content .link {
+
+    text-decoration: none;
+    color: white;
+
+    padding: 6px;
+    margin-right: 10px;
+}

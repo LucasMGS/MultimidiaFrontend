@@ -1,41 +1,24 @@
-.banner_content{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-header{
-    background-color:#e02041;
-    display: flex;
+header {
+    background-color: #e02041;
     height: 60px;
-    padding-left: 150px;
-
-}
-
-.account-container {
-    /* background-color: red; */
-    /* width: 320px; */
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    /* align-items: center; */
 }
 
-.banner .banner_content .link-multimidia {
-    text-decoration: none;
-    font-size: 20px;
-    color: black;
+.welcome {
+    display: flex;
+    align-items: center;
 }
 
-.banner .banner_content .link {
-    /* border-style: solid;
-    border-color: white;
-    border-width: 2px;
-    border-radius: 6px; */
+
+.banner h3{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding-left: 150px;
+}
+
+.link{
     text-decoration: none;
-    color: white;
-    /* border-style: solid; */
-    padding: 6px;
-    margin-right: 10px;
 }

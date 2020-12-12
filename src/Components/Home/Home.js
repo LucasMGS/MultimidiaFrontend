@@ -15,7 +15,7 @@ function Home() {
             <Nav />
             <Banner />
             <div className="rows">
-                <Row title="ORIGINAIS NETFLIX" url={requests.fetchNetflixOriginals} isLargeRow/>
+                <Row title="ORIGINAIS MULTIFLIX" url={requests.fetchNetflixOriginals} isLargeRow/>
                 <Row title="Tendências agora" url={requests.fetchTrending}/>
                 <Row title="Melhores avaliados" url={requests.fetchTopRated}/>
                 <Row title="Filmes de ação" url={requests.fetchActionMovies}/>
